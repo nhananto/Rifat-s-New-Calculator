@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rifat's New Calculator</title>
+<style>
+    html, body
+    {
+        height: 100%;
+    }
+    body
+    {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: 0;
+        background-color: gainsboro;
+    }
+    .container
+    {
+        width: 300px;
+        margin: auto;
+    }
+    
+    .row
+    {
+        width: 100%;
+        
+    }
+    table 
+    {
+        width: 100%;
+        border-color: grey;
+        padding: 0px;
+    }
+    #resultfield
+    {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 40px;
+        height: 100px;
+        font-weight: lighter;
+        text-align: right;
+        border-color: #DCDCDC;
+        background-color: black;
+        color: white;
+        padding: 10px;
+    }
+    .button
+    {
+        width: 100%;
+        height: 60px;
+        float: left;
+        border: none;
+        font-size: 24px;
+        font-weight: lighter;
+        cursor: pointer;      
+    }
+    input:focus
+    {
+        outline: none;
+    }
+    .button:active
+    {
+        background-color: rgb(160,160,160);
+    }
+    .operator
+    {
+        background-color: rgb(241, 127, 20);
+        color: white;
+    }
+    .suboperator
+    {
+        background-color: #C0C0C0;
+        color: black;
+    }
+    .digitzero
+    {
+        width: 100%;
+        text-align: left;
+        padding-left: 37px;
+    }
+</style>
+<body>
+    <div class="container">
+        <table border="1" cellspacing="0">
+            <div class="row">
+                <tr>
+                    <td colspan="4" id="resultfield">0</td>  
+                </tr>  
+            </div>
+        <div class="row">
+            <tr>
+                <td><button class="button suboperator" onclick="pushBtn(this);">AC</button></td>
+                <td><button class="button suboperator" onclick="pushBtn(this);">+/-</button></td>
+                <td><button class="button suboperator" onclick="pushBtn(this);">%</button></td>
+                <td><button class="button operator" onclick="pushBtn(this);">/</button></td>
+            </tr>
+        </div>
+        <div class="row">
+            <tr>
+                <td><button class="button digit" onclick="pushBtn(this);">7</button></td>
+                <td><button class="button digit" onclick="pushBtn(this);">8</button></td>
+                <td><button class="button digit" onclick="pushBtn(this);">9</button></td>
+                <td><button class="button operator" onclick="pushBtn(this);">*</button></td>
+            </tr>
+        </div>
+        <div class="row">
+            <tr>
+                <td><button class="button digit" onclick="pushBtn(this);">4</button></td>
+                <td><button class="button digit" onclick="pushBtn(this);">5</button></td>
+                <td><button class="button digit" onclick="pushBtn(this);">6</button></td>
+                <td><button class="button operator" onclick="pushBtn(this);">+</button></td>
+            </tr>
+        </div>
+        <div class="row">
+            <tr>
+                <td><button class="button digit" onclick="pushBtn(this);">1</button></td>
+                <td><button class="button digit" onclick="pushBtn(this);">2</button></td>
+                <td><button class="button digit" onclick="pushBtn(this);">3</button></td>
+                <td><button class="button operator" onclick="pushBtn(this);">-</button></td>
+            </tr>
+        </div>
+        <div class="row">
+            <div class="row">
+                <tr>
+                    <td colspan="2"><button class="button digitzero" onclick="pushBtn(this);">0</button></td>
+                    <td><button class="button digit" onclick="pushBtn(this);">.</button></td>
+                    <td><button class="button operator" onclick="pushBtn(this);">=</button></td>
+                </tr>
+            </div>
+        </div>
+        </table>
+    </div>
+ 
+<script>
+    var resultfield = document.getElementById('resultfield');
+
+    function pushBtn(obj) {
+         
+        var pushed = obj.innerHTML;
+         
+        if (pushed == '=') {
+            // Calculate
+            resultfield.innerHTML = eval(resultfield.innerHTML);
+             
+        } else if (pushed == '+/-') {
+            // All Clear
+            resultfield.innerHTML = -(resultfield.innerHTML);
+             
+        }else if (pushed == '%') {
+            // All Clear
+            resultfield.innerHTML = (resultfield.innerHTML)/100;
+             
+        }
+         else if (pushed == 'AC') {
+            // All Clear
+            resultfield.innerHTML = '0';
+             
+        }else
+         {
+            if (resultfield.innerHTML == '0') {
+                resultfield.innerHTML = pushed;
+                 
+            } else {
+                resultfield.innerHTML += pushed;   
+            }
+        }
+    }
+</script>
+</body>
+</html>
